@@ -1,4 +1,4 @@
-alert("hey")
+/*alert("hey")
 
 //Var = is global scope so oit could cause conflict with other variables
 //let = allows us to reassign it to another value 
@@ -245,3 +245,100 @@ function Person(firstName, lastName, dob){
 // we decalre name for new person and pass in the info that the constructor requires
 const person1 = new Person('Gerson', 'Roa', '2-3-1996');
 
+// using protoypes t
+//we can use them to get rid off the methos inside the constructor because not every instance need all methods
+// we can add the method to the prototype by 
+Person.prototype.getBirthYear = function() {
+    return this.dob.getFullYear();
+}
+
+Person.prototype.getFullName = function () {
+    return `${this.firstName} ${this.lastName}`;
+}
+
+//ES6 classes we can do it like this 
+//does the same but in a nicer way
+// we decalre it with the class key word  
+class Person {
+    //we use the method constructor 
+    //methods are functions inside classes
+    //takes in params
+    constructor(firstName, lastName, dob) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = new Date(dob);
+    }
+    //methods inside the class
+    getBirthYear() {
+        return this.dob.getFullYear();
+    }
+    getFullName(){
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+
+//single element
+document.getElementById()
+document.querySelector()
+//multiple element 
+document.querySelectorAll()
+document.getElementsByClassName()
+document.getElementsByTagName()
+
+
+//to loop thru the items 
+const items = document.querySelectorAll('.item');
+
+items.forEach(item) => console.log(items)
+
+// to maniputale elemts in the dom 
+const ul = document.querySelector('.items');
+
+//ul.remove();
+//ul.lastElementChild.remove();
+ul.firstElementChild.textContent = 'hello';
+ul.children[1].innerText = 'gerson';
+ul.lastElementChild.innerHTML = '<h1> hello </h1>';
+ 
+// we can change the style in the button by 
+const btn = document.querySelector('.btn');
+btn.style.background = 'red';
+
+// Events 
+const btn = document.querySelector('.btn');
+
+btn.addEventListener('click', (e) => {
+    console.log('click')
+})*/
+
+
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const msg = document.querySelector('.msg');
+const userList = document.querySelector('#users');
+
+myForm.addEventListener('submit', onsubmit);
+
+function onsubmit(e) {
+    e.preventDefault();
+    
+    if(nameInput.value === '' || emailInput.value === ''){
+        msg.classList.add('error');
+        msg.innerHTML = 'please enter all fields';
+
+        setTimeout(() => msg.remove(), 3000);
+    }else{
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode( `${nameInput.value} : 
+        ${emailInput.value}`));
+
+        userList.appendChild(li);
+
+        //clear fields 
+        nameInput.value = '';
+        emailInput.value = '';
+
+    }
+}
