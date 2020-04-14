@@ -156,5 +156,92 @@ const todoCompleted = todos.filter(function(todo){
     return todo.text;
 })
 
+// Conditionals
+// looslie equals ==
+//strictly equals ===
 
+const x = 10;
+if(x === 10) {
+    Console.log('x is 10');
+}else if(x > 10) {
+    console.log('x is greater than 10');
+}else {
+    console.log('x is less than 10')
+}
+
+const x = 4;
+const y = 11;
+if( x > 5 && y > 10){
+    console.log('x is more')
+}
+
+//turnieror operator 
+const x = 10;
+
+const color = x > 10 ? 'red' : 'blue';
+//switches to evaluate a condition 
+switch(color) {
+    case 'red':
+        console.log('color is red');
+        break;
+        case 'blue':
+            console.log('color is not blue');
+        break;
+        default:
+            console.log('color is not red or blue');
+            break;
+}
+
+//functions 
+//functions take paramaters that are num1 and num2 
+// we can set up a default value to our params with =1 inside the perantecis
+//we have to always return the output with 
+function addNums(num1, num2){
+//console.log(num1 + num2)
+return num1 + num2;
+}
+addNums(5,4)
+
+//ES6 arrow function or fat arrow 
+//we don't use key word function 
+//we declare the variable with const
+const addNumbers = (numb1,numb2) => {
+    return numb1 + numb2
+}
+//if  function only has one expresion we can get rid of the curly brackets
+// we can get rid of the return key word  
+const addNumbers = (numb1,numb2) => numb1 + numb2
+//if there is only one param we can do this 
+const addNumbers = numb1 => numb1 + 5;
+//arrow function inside methods 
+todos.forEach((todo) => console.log(todo));
+//lexical this word inside arrow functions
+
+//object oriented programming 
+//constructor function in prototypes and in ES6 classess 
+//capital letter when its a constructor function 
+//takes in params and key value pairs 
+// we can use the date constructor to format the date from string to date 
+
+
+function Person(firstName, lastName, dob){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    //this.dob = dob;
+    this.dob = new Date(dob);
+    // by using date constructor we can call different functions with the .dob expresion
+    //adding methods toconstructor
+    //methods have functions inside the value 
+    this.getBirthYear = function() {
+        return this.dob.getFullYear();
+    }
+    this.getFullName = function() {
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+//instantiate object 
+// new key word is use to create a new instance of the constructor 
+// we decalre name for new person and pass in the info that the constructor requires
+const person1 = new Person('Gerson', 'Roa', '2-3-1996');
 
